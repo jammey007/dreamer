@@ -6,10 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Solution extends Train {
+public class Solution extends Reservation {
 
-	public Solution(int tid, String tname, String ttype, int tcost) {
-		super(tid, tname, ttype, tcost);
+	public Solution(int id, String vehicle, String date, String time, int cost) {
+		super(id, vehicle, date, time, cost);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,13 +19,13 @@ public class Solution extends Train {
 		Session session = sf.openSession();
 		session.beginTransaction();
 
-		Train tr = new Train(123, "vaigai", "sleeper", 60000);
+		Reservation tr = new Reservation(101, "flight", "12-12-2017", "12.00am", 12000);
 
-		System.out.println(tr.getTid());
-		System.out.println(tr.getTname());
-		System.out.println(tr.getTtype());
-
-		System.out.println(tr.getTcost());
+		System.out.println(tr.getId());
+		System.out.println(tr.getVehicle());
+		System.out.println(tr.getDate());
+		System.out.println(tr.getTime());
+		System.out.println(tr.getCost());
 		session.save(tr);
 		session.getTransaction().commit();
 		session.close();
