@@ -1,48 +1,49 @@
-package project.emp;
+package org.grocery.stock;
 
-import java.io.IOException;
+import java.text.ParseException;
+import java.util.Scanner;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Solution extends Employe {
+public class Solution extends Item {
 
-	public static void main(String[] args) throws IOException {
-
+	public static void main(String[] args) throws ParseException {
+		// TODO Auto-generated method stub
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		Session session = sf.openSession();
+
+		Scanner ob = new Scanner(System.in);
 		session.beginTransaction();
-		Employe ob = new Employe();
-
-		ob.setEmailid("saranrajasaravana@gmail.com");
-		ob.setId(10);
-		ob.setName("jammey");
-		ob.setPhone(9894306110l);
-		System.out.println(ob.getEmailid());
-		System.out.println(ob.getId());
-		System.out.println(ob.getName());
-		System.out.println(ob.getPhone());
-		Employe ob1 = new Employe();
-		ob1.setEmailid("xyz@gmail.com");
-		ob1.setId(101);
-		ob1.setName("saro");
-		ob1.setPhone(9894306109l);
-		System.out.println(ob1.getEmailid());
-		System.out.println(ob1.getId());
-		System.out.println(ob1.getName());
-		System.out.println(ob1.getPhone());
-
-		Employe emp = new Employe(1, "jai", "x@g.com", 987654567l);
-
-		System.out.println(emp.getId());
-		System.out.println(emp.getName());
-		System.out.println(emp.getEmailid());
-
-		System.out.println(emp.getPhone());
-		session.save(emp);
+		Item item = new Item();
+		item.setId(2);
+		//System.out.println(item.getId());
+		//System.out.println(item.getName());
+		//System.out.println(item.getPrice());
+		//System.out.println(item.getQuantity());
+		
+		//item.setName("Gum");
+		//item.setPrice(12.09);
+		//session.update(item);
+		session.delete(item);
 		session.getTransaction().commit();
-		session.close();
+		//Item i = new Item();
+		//int ch = 1;
+
+		/*
+		 * while (ch >= 1) {
+		 * System.out.println("Enter 1 to add\n Enter 2 to get result"); ch =
+		 * ob.nextInt(); switch (ch) { case 1: { i.setName(ob.next());
+		 * i.setQuantity(ob.nextInt()); i.setPrice(ob.nextDouble());
+		 * session.save(i);
+		 * 
+		 * session.close(); sf.close(); System.out.println("Item saved"); break;
+		 * } case 2: { System.out.println(Item.getTotalNoOfProducts()); break; }
+		 * default: ch = 0; break; }
+		 * 
+		 * }
+		 */
 
 	}
 
